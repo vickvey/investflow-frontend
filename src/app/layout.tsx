@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Inter } from 'next/font/google';
 import './globals.css';
 
 const geistSans = Geist({
@@ -12,9 +12,20 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
+const inter = Inter({ subsets: ['latin'] });
+
 export const metadata: Metadata = {
-  title: 'InvestFlow',
-  description: 'A stock analysis + stock portfolio allocation project',
+  title: 'InvestFlow - Smart Stock Analysis & Portfolio Optimization',
+  description:
+    'Make data-driven investment decisions with powerful stock analysis and portfolio allocation based on Modern Portfolio Theory.',
+  keywords: [
+    'stock analysis',
+    'portfolio optimization',
+    'investment',
+    'modern portfolio theory',
+    'financial analysis',
+    'stock market',
+  ],
 };
 
 export default function RootLayout({
@@ -23,12 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang='en' className='scroll-smooth'>
+      <body className={`${inter.className} antialiased`}>{children}</body>
     </html>
   );
 }
