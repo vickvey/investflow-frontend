@@ -2,7 +2,7 @@
 
 @plugin 'tailwindcss-animate';
 
-@source '../../*.{js,ts,jsx,tsx,mdx}';
+@source './**/*.{js,ts,jsx,tsx,mdx}';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -37,6 +37,9 @@
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
+
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -90,65 +93,66 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* Using the provided color palette: F9F7F7, DBE2EF, 3F72AF, 112D4E */
+    --background: 220 30% 98%; /* F9F7F7 - very light gray/off-white */
+    --foreground: 217 60% 18%; /* 112D4E - dark navy blue */
 
-    --card: 210 40% 98%;
-    --card-foreground: 222 47% 11%;
+    --card: 220 30% 98%; /* F9F7F7 */
+    --card-foreground: 217 60% 18%; /* 112D4E */
 
-    --popover: 210 40% 98%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 220 30% 98%; /* F9F7F7 */
+    --popover-foreground: 217 60% 18%; /* 112D4E */
 
-    --primary: 210 100% 45%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 217 48% 47%; /* 3F72AF - medium blue */
+    --primary-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --secondary: 215 25% 92%;
-    --secondary-foreground: 222 47% 11%;
+    --secondary: 214 36% 89%; /* DBE2EF - light blue/gray */
+    --secondary-foreground: 217 60% 18%; /* 112D4E */
 
-    --muted: 215 25% 92%;
-    --muted-foreground: 215 25% 40%;
+    --muted: 214 36% 89%; /* DBE2EF */
+    --muted-foreground: 217 40% 35%; /* Lighter version of 112D4E */
 
-    --accent: 210 30% 92%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 214 36% 89%; /* DBE2EF */
+    --accent-foreground: 217 60% 18%; /* 112D4E */
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --border: 214 32% 85%;
-    --input: 214 32% 85%;
-    --ring: 222 47% 11%;
+    --border: 214 20% 84%; /* Lighter version of DBE2EF */
+    --input: 214 20% 84%; /* Lighter version of DBE2EF */
+    --ring: 217 48% 47%; /* 3F72AF */
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    --background: 217 60% 18%; /* 112D4E - dark navy blue */
+    --foreground: 220 30% 98%; /* F9F7F7 */
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 217 60% 18%; /* 112D4E */
+    --card-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 217 60% 18%; /* 112D4E */
+    --popover-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --primary: 210 100% 50%;
-    --primary-foreground: 222 47% 11%;
+    --primary: 217 48% 47%; /* 3F72AF */
+    --primary-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 217 50% 25%; /* Darker version of 3F72AF */
+    --secondary-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 217 50% 25%; /* Darker version of 3F72AF */
+    --muted-foreground: 214 15% 75%; /* Lighter version of DBE2EF */
 
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 217 50% 25%; /* Darker version of 3F72AF */
+    --accent-foreground: 220 30% 98%; /* F9F7F7 */
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 220 30% 98%; /* F9F7F7 */
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 213 27% 84%;
+    --border: 217 50% 25%; /* Darker version of 3F72AF */
+    --input: 217 50% 25%; /* Darker version of 3F72AF */
+    --ring: 214 36% 89%; /* DBE2EF */
   }
 }
 
@@ -158,5 +162,47 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Typography improvements */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-geist-sans font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight;
+  }
+
+  h2 {
+    @apply text-2xl sm:text-3xl md:text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-xl sm:text-2xl leading-snug;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  .section-title {
+    @apply font-geist-sans font-bold text-foreground;
+  }
+
+  .feature-title {
+    @apply font-geist-sans font-semibold text-foreground;
+  }
+
+  .financial-text {
+    @apply font-geist-sans text-foreground/90;
+  }
+
+  .mono {
+    @apply font-geist-mono;
   }
 }

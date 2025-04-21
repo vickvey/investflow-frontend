@@ -23,32 +23,32 @@ export default function LandingPage() {
           {/* InvestFlow and Logo */}
           <div className='flex items-center gap-2'>
             <TrendingUp className='h-6 w-6 text-primary' />
-            <span className='text-xl font-bold'>InvestFlow</span>
+            <span className='text-xl font-bold tracking-tight'>InvestFlow</span>
           </div>
 
           {/* Landing Page Navigation */}
           <nav className='hidden md:flex gap-6'>
             <Link
               href='#features'
-              className='text-sm font-medium hover:text-primary'
+              className='text-sm font-medium hover:text-primary transition-colors'
             >
               Features
             </Link>
             <Link
               href='#portfolio-theory'
-              className='text-sm font-medium hover:text-primary'
+              className='text-sm font-medium hover:text-primary transition-colors'
             >
               Portfolio Theory
             </Link>
             <Link
               href='#analysis'
-              className='text-sm font-medium hover:text-primary'
+              className='text-sm font-medium hover:text-primary transition-colors'
             >
               Stock Analysis
             </Link>
             <Link
               href='#testimonials'
-              className='text-sm font-medium hover:text-primary'
+              className='text-sm font-medium hover:text-primary transition-colors'
             >
               Testimonials
             </Link>
@@ -58,13 +58,13 @@ export default function LandingPage() {
           <div className='flex items-center gap-4'>
             <Link
               href='/login'
-              className='text-sm font-medium hover:text-primary'
+              className='text-sm font-medium hover:text-primary transition-colors'
             >
               Log in
             </Link>
 
             <Link href='/signup'>
-              <button className='px-4 py-2 bg-[#0073e6] text-white font-semibold rounded-lg shadow-md hover:bg-[#0073e6]/90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer transition-colors'>
+              <button className='px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer transition-colors'>
                 Get Started
               </button>
             </Link>
@@ -75,12 +75,12 @@ export default function LandingPage() {
       {/* Main Content Section */}
       <main className='flex-1'>
         {/* Hero Section */}
-        <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-linear-to-b from-background to-secondary/50'>
+        <section className='w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-gradient-to-b from-background to-secondary/30'>
           <div className='container px-4 md:px-6'>
             <div className='grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px] md:px-6'>
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='space-y-2'>
-                  <h1 className='text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none'>
+                  <h1 className='section-title'>
                     Data-Driven Stock Analysis & Portfolio Optimization
                   </h1>
                   <p className='max-w-[600px] text-muted-foreground md:text-xl'>
@@ -91,13 +91,13 @@ export default function LandingPage() {
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
                   <Link href='/signup'>
-                    <button className='px-6 py-3 bg-[#0073e6] text-white font-semibold rounded-lg shadow-md hover:bg-[#0073e6]/90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer flex items-center transition-colors'>
+                    <button className='px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer flex items-center transition-colors'>
                       Get Started
                       <ArrowRight className='ml-2 h-4 w-4' />
                     </button>
                   </Link>
                   <Link href='#features'>
-                    <button className='px-6 py-3 border-2 border-[#0073e6] text-[#0073e6] font-semibold rounded-lg shadow-md hover:bg-[#0073e6]/10 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 cursor-pointer transition-colors'>
+                    <button className='px-6 py-3 border-2 border-primary text-primary font-medium rounded-lg shadow-sm hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer transition-colors'>
                       Learn More
                     </button>
                   </Link>
@@ -121,15 +121,15 @@ export default function LandingPage() {
         {/* Features Section */}
         <section
           id='features'
-          className='w-full py-12 md:py-24 lg:py-32 bg-accent'
+          className='w-full py-12 md:py-24 lg:py-32 bg-secondary/50'
         >
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
+                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-medium'>
                   Features
                 </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
+                <h2 className='section-title'>
                   Powerful Tools for Smarter Investing
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
@@ -143,7 +143,7 @@ export default function LandingPage() {
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='flex items-center space-x-2 rounded-lg bg-primary/10 p-2'>
                   <BarChart3 className='h-5 w-5 text-primary' />
-                  <h3 className='text-xl font-bold'>
+                  <h3 className='feature-title'>
                     Comprehensive Stock Analysis
                   </h3>
                 </div>
@@ -153,7 +153,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Detailed Stock Information
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Get comprehensive data on any stock including price
                         history, volume, market cap, P/E ratio, dividend yield,
                         and more.
@@ -165,7 +165,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Performance Analysis
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Analyze stock performance over custom time periods with
                         key metrics like alpha, beta, Sharpe ratio, and
                         volatility.
@@ -177,7 +177,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Technical Indicators
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Access moving averages, RSI, MACD, Bollinger Bands, and
                         other technical indicators to inform your trading
                         decisions.
@@ -186,7 +186,7 @@ export default function LandingPage() {
                   </li>
                 </ul>
               </div>
-              <div className='rounded-xl border bg-card p-2 shadow-xs'>
+              <div className='rounded-xl border bg-card p-2 shadow-md'>
                 <Image
                   src='/placeholder.svg?height=400&width=500'
                   width={500}
@@ -197,7 +197,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12'>
-              <div className='order-last lg:order-first rounded-xl border bg-card p-2 shadow-xs'>
+              <div className='order-last lg:order-first rounded-xl border bg-card p-2 shadow-md'>
                 <Image
                   src='/placeholder.svg?height=400&width=500'
                   width={500}
@@ -209,7 +209,7 @@ export default function LandingPage() {
               <div className='flex flex-col justify-center space-y-4'>
                 <div className='flex items-center space-x-2 rounded-lg bg-primary/10 p-2'>
                   <PieChart className='h-5 w-5 text-primary' />
-                  <h3 className='text-xl font-bold'>
+                  <h3 className='feature-title'>
                     Scientific Portfolio Allocation
                   </h3>
                 </div>
@@ -219,7 +219,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Modern Portfolio Theory
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Optimize your portfolio based on the Nobel Prize-winning
                         Modern Portfolio Theory to maximize returns for a given
                         risk level.
@@ -231,7 +231,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Risk-Return Analysis
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Visualize the efficient frontier and understand the
                         risk-return tradeoffs of different portfolio
                         allocations.
@@ -243,7 +243,7 @@ export default function LandingPage() {
                       <h4 className='text-lg font-medium'>
                         Budget-Based Optimization
                       </h4>
-                      <p className='text-sm text-muted-foreground'>
+                      <p className='text-sm text-muted-foreground financial-text'>
                         Input your investment budget and get specific allocation
                         recommendations with projected performance metrics.
                       </p>
@@ -263,10 +263,10 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
+                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-medium'>
                   Modern Portfolio Theory
                 </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
+                <h2 className='section-title'>
                   Scientific Approach to Portfolio Management
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
@@ -276,45 +276,45 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3'>
-              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary/10'>
                   <Target className='h-6 w-6 text-primary' />
                 </div>
-                <h3 className='text-xl font-bold'>Efficient Frontier</h3>
-                <p className='text-sm text-muted-foreground'>
+                <h3 className='feature-title'>Efficient Frontier</h3>
+                <p className='text-sm text-muted-foreground financial-text'>
                   Visualize the set of optimal portfolios that offer the highest
                   expected return for a defined level of risk, helping you make
                   better allocation decisions.
                 </p>
               </div>
-              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary/10'>
                   <Percent className='h-6 w-6 text-primary' />
                 </div>
-                <h3 className='text-xl font-bold'>Risk Diversification</h3>
-                <p className='text-sm text-muted-foreground'>
+                <h3 className='feature-title'>Risk Diversification</h3>
+                <p className='text-sm text-muted-foreground financial-text'>
                   Reduce portfolio volatility through scientific diversification
                   across different assets with varying correlation coefficients.
                 </p>
               </div>
-              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col items-start space-y-3 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='flex h-12 w-12 items-center justify-center rounded-full bg-primary/10'>
                   <BarChart4 className='h-6 w-6 text-primary' />
                 </div>
-                <h3 className='text-xl font-bold'>Performance Metrics</h3>
-                <p className='text-sm text-muted-foreground'>
+                <h3 className='feature-title'>Performance Metrics</h3>
+                <p className='text-sm text-muted-foreground financial-text'>
                   Evaluate portfolios using key metrics like Sharpe ratio,
                   Sortino ratio, maximum drawdown, and risk-adjusted returns.
                 </p>
               </div>
             </div>
-            <div className='mx-auto max-w-5xl rounded-xl border bg-card p-6 shadow-xs'>
+            <div className='mx-auto max-w-5xl rounded-xl border bg-card p-6 shadow-md'>
               <div className='grid gap-6 lg:grid-cols-[2fr_3fr] items-center'>
                 <div className='space-y-4'>
                   <h3 className='text-2xl font-bold'>
                     The Science Behind Our Approach
                   </h3>
-                  <p className='text-muted-foreground'>
+                  <p className='text-muted-foreground financial-text'>
                     Modern Portfolio Theory, developed by Harry Markowitz in
                     1952, revolutionized how investors think about portfolio
                     construction. InvestFlow implements these principles to help
@@ -323,17 +323,19 @@ export default function LandingPage() {
                   <ul className='space-y-2'>
                     <li className='flex items-start gap-2'>
                       <ChevronRight className='mt-1 h-4 w-4 text-primary shrink-0' />
-                      <span>Optimize the risk-return tradeoff</span>
+                      <span className='financial-text'>
+                        Optimize the risk-return tradeoff
+                      </span>
                     </li>
                     <li className='flex items-start gap-2'>
                       <ChevronRight className='mt-1 h-4 w-4 text-primary shrink-0' />
-                      <span>
+                      <span className='financial-text'>
                         Reduce portfolio volatility through diversification
                       </span>
                     </li>
                     <li className='flex items-start gap-2'>
                       <ChevronRight className='mt-1 h-4 w-4 text-primary shrink-0' />
-                      <span>
+                      <span className='financial-text'>
                         Maximize expected returns for your risk tolerance
                       </span>
                     </li>
@@ -355,15 +357,15 @@ export default function LandingPage() {
         {/* Stock Analysis Section */}
         <section
           id='analysis'
-          className='w-full py-12 md:py-24 lg:py-32 bg-accent'
+          className='w-full py-12 md:py-24 lg:py-32 bg-secondary/50'
         >
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
+                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-medium'>
                   Stock Analysis
                 </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
+                <h2 className='section-title'>
                   Comprehensive Stock Analysis Tools
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
@@ -373,14 +375,14 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2'>
-              <div className='rounded-xl border bg-card p-6 shadow-xs'>
+              <div className='rounded-xl border bg-card p-6 shadow-md'>
                 <div className='flex items-center gap-4 mb-4'>
                   <div className='flex h-10 w-10 items-center justify-center rounded-full bg-primary/10'>
                     <Clock className='h-5 w-5 text-primary' />
                   </div>
-                  <h3 className='text-xl font-bold'>Time Period Analysis</h3>
+                  <h3 className='feature-title'>Time Period Analysis</h3>
                 </div>
-                <p className='text-muted-foreground mb-4'>
+                <p className='text-muted-foreground mb-4 financial-text'>
                   Analyze stock performance over any time period, from days to
                   decades. Compare performance across different market
                   conditions.
@@ -394,14 +396,14 @@ export default function LandingPage() {
                   />
                 </div>
               </div>
-              <div className='rounded-xl border bg-card p-6 shadow-xs'>
+              <div className='rounded-xl border bg-card p-6 shadow-md'>
                 <div className='flex items-center gap-4 mb-4'>
                   <div className='flex h-10 w-10 items-center justify-center rounded-full bg-primary/10'>
                     <LineChart className='h-5 w-5 text-primary' />
                   </div>
-                  <h3 className='text-xl font-bold'>Technical Indicators</h3>
+                  <h3 className='feature-title'>Technical Indicators</h3>
                 </div>
-                <p className='text-muted-foreground mb-4'>
+                <p className='text-muted-foreground mb-4 financial-text'>
                   Access a comprehensive suite of technical indicators to
                   identify trends, momentum, and potential entry/exit points.
                 </p>
@@ -414,14 +416,14 @@ export default function LandingPage() {
                   />
                 </div>
               </div>
-              <div className='rounded-xl border bg-card p-6 shadow-xs'>
+              <div className='rounded-xl border bg-card p-6 shadow-md'>
                 <div className='flex items-center gap-4 mb-4'>
                   <div className='flex h-10 w-10 items-center justify-center rounded-full bg-primary/10'>
                     <DollarSign className='h-5 w-5 text-primary' />
                   </div>
-                  <h3 className='text-xl font-bold'>Fundamental Data</h3>
+                  <h3 className='feature-title'>Fundamental Data</h3>
                 </div>
-                <p className='text-muted-foreground mb-4'>
+                <p className='text-muted-foreground mb-4 financial-text'>
                   Review key financial metrics, earnings reports, and valuation
                   ratios to assess a company's financial health and growth
                   potential.
@@ -435,14 +437,14 @@ export default function LandingPage() {
                   />
                 </div>
               </div>
-              <div className='rounded-xl border bg-card p-6 shadow-xs'>
+              <div className='rounded-xl border bg-card p-6 shadow-md'>
                 <div className='flex items-center gap-4 mb-4'>
                   <div className='flex h-10 w-10 items-center justify-center rounded-full bg-primary/10'>
                     <Briefcase className='h-5 w-5 text-primary' />
                   </div>
-                  <h3 className='text-xl font-bold'>Comparative Analysis</h3>
+                  <h3 className='feature-title'>Comparative Analysis</h3>
                 </div>
-                <p className='text-muted-foreground mb-4'>
+                <p className='text-muted-foreground mb-4 financial-text'>
                   Compare multiple stocks side-by-side to identify the best
                   investment opportunities within a sector or across different
                   industries.
@@ -465,10 +467,10 @@ export default function LandingPage() {
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
+                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-medium'>
                   User Dashboard
                 </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
+                <h2 className='section-title'>
                   Your Investment Command Center
                 </h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
@@ -478,7 +480,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='mx-auto max-w-5xl py-12'>
-              <div className='rounded-xl border bg-card p-4 shadow-xs'>
+              <div className='rounded-xl border bg-card p-4 shadow-md'>
                 <div className='relative h-[400px] md:h-[500px]'>
                   <Image
                     src='/placeholder.svg?height=500&width=1000'
@@ -494,7 +496,7 @@ export default function LandingPage() {
                     <BarChart3 className='h-6 w-6 text-primary' />
                   </div>
                   <h3 className='text-lg font-bold'>Performance Tracking</h3>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     Monitor your portfolio's performance with detailed metrics
                     and visualizations.
                   </p>
@@ -504,7 +506,7 @@ export default function LandingPage() {
                     <PieChart className='h-6 w-6 text-primary' />
                   </div>
                   <h3 className='text-lg font-bold'>Allocation Tools</h3>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     Optimize your portfolio allocation with interactive tools
                     based on Modern Portfolio Theory.
                   </p>
@@ -514,7 +516,7 @@ export default function LandingPage() {
                     <TrendingUp className='h-6 w-6 text-primary' />
                   </div>
                   <h3 className='text-lg font-bold'>Stock Analysis</h3>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     Access comprehensive stock analysis tools to evaluate
                     potential investments.
                   </p>
@@ -527,17 +529,15 @@ export default function LandingPage() {
         {/* Testimonials Section */}
         <section
           id='testimonials'
-          className='w-full py-12 md:py-24 lg:py-32 bg-accent'
+          className='w-full py-12 md:py-24 lg:py-32 bg-secondary/50'
         >
           <div className='container px-4 md:px-6'>
             <div className='flex flex-col items-center justify-center space-y-4 text-center'>
               <div className='space-y-2'>
-                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground'>
+                <div className='inline-block rounded-lg bg-primary px-3 py-1 text-sm text-primary-foreground font-medium'>
                   Testimonials
                 </div>
-                <h2 className='text-3xl font-bold tracking-tighter md:text-4xl/tight'>
-                  What our users say
-                </h2>
+                <h2 className='section-title'>What our users say</h2>
                 <p className='max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed'>
                   Hear from investors who have transformed their approach with
                   InvestFlow.
@@ -545,7 +545,7 @@ export default function LandingPage() {
               </div>
             </div>
             <div className='mx-auto grid max-w-5xl gap-6 py-12 md:grid-cols-2 lg:grid-cols-3'>
-              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='space-y-2'>
                   <div className='flex gap-1 text-yellow-400'>
                     {[...Array(5)].map((_, i) => (
@@ -566,7 +566,7 @@ export default function LandingPage() {
                       </svg>
                     ))}
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     "InvestFlow's portfolio allocation tools helped me optimize
                     my investments based on Modern Portfolio Theory. My returns
                     increased by 12% while reducing volatility."
@@ -584,7 +584,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='space-y-2'>
                   <div className='flex gap-1 text-yellow-400'>
                     {[...Array(5)].map((_, i) => (
@@ -605,7 +605,7 @@ export default function LandingPage() {
                       </svg>
                     ))}
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     "The technical analysis tools are comprehensive and easy to
                     use. I can quickly evaluate stocks using multiple indicators
                     and make data-driven decisions."
@@ -621,7 +621,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-xs'>
+              <div className='flex flex-col justify-between space-y-4 rounded-lg border bg-card p-6 shadow-md'>
                 <div className='space-y-2'>
                   <div className='flex gap-1 text-yellow-400'>
                     {[...Array(5)].map((_, i) => (
@@ -642,7 +642,7 @@ export default function LandingPage() {
                       </svg>
                     ))}
                   </div>
-                  <p className='text-sm text-muted-foreground'>
+                  <p className='text-sm text-muted-foreground financial-text'>
                     "As a financial advisor, I use InvestFlow to demonstrate
                     portfolio optimization concepts to my clients. The
                     visualizations make complex theories accessible."
@@ -678,15 +678,17 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                <button>
-                  <Link href='/signup'>
-                    Start Your Free Trial{' '}
+                <Link href='/signup'>
+                  <button className='px-6 py-3 bg-white text-primary font-medium rounded-lg shadow-md hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 cursor-pointer flex items-center transition-colors'>
+                    Start Your Free Trial
                     <ArrowRight className='ml-2 h-4 w-4' />
-                  </Link>
-                </button>
-                <button className='bg-primary-foreground/10 text-primary-foreground hover:bg-primary-foreground/20'>
-                  <Link href='#features'>Learn More</Link>
-                </button>
+                  </button>
+                </Link>
+                <Link href='#features'>
+                  <button className='px-6 py-3 bg-primary-foreground/10 text-primary-foreground border border-white/30 font-medium rounded-lg hover:bg-primary-foreground/20 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 cursor-pointer transition-colors'>
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -706,19 +708,19 @@ export default function LandingPage() {
           <div className='flex gap-4'>
             <Link
               href='#'
-              className='text-sm text-muted-foreground hover:text-primary'
+              className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Terms
             </Link>
             <Link
               href='#'
-              className='text-sm text-muted-foreground hover:text-primary'
+              className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Privacy
             </Link>
             <Link
               href='#'
-              className='text-sm text-muted-foreground hover:text-primary'
+              className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Contact
             </Link>
