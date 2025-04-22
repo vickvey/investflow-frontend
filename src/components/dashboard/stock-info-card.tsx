@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { StockInput } from '@/components/ui/stock-input';
+import { apiUrl } from '@/lib/apiUrl';
 
 // Define interface for stock data
 interface StockData {
@@ -41,7 +42,7 @@ export function StockInfoCard() {
       setError(null);
       try {
         const response = await fetch(
-          `http://localhost:8000/api/stock/${selectedStock}/info`,
+          `${apiUrl}/api/stock/${selectedStock}/info`,
         );
         if (!response.ok) {
           throw new Error('Failed to fetch stock data');
