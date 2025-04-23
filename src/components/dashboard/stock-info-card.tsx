@@ -70,7 +70,7 @@ export function StockInfoCard() {
   }
 
   return (
-    <Card title='Stock Information'>
+    <Card title='Stock Information' id='stock-information'>
       <div className='mb-4'>
         <StockInput
           onSelect={setSelectedStock}

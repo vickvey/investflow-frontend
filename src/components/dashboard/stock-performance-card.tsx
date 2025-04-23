@@ -210,7 +210,7 @@ export function StockPerformanceCard() {
   };
 
   return (
-    <Card title='Stock Performance Analysis'>
+    <Card title='Stock Performance Analysis' id='performance-analysis'>
       <div className='mb-4 grid gap-4 md:grid-cols-2'>
         <StockInput
           onSelect={setSelectedStock}
