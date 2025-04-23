@@ -10,7 +10,7 @@ import { CandlestickChartCard } from '@/components/dashboard/candlestick-chart-c
 export default function UserDashboard() {
   return (
     <div className='space-y-8'>
-      <section id='stocks'>
+      <section id='stocks-analysis'>
         <h2 className='mb-6 text-2xl font-bold'>Stock Analysis</h2>
         <div className='grid gap-6'>
           <StockInfoCard />
@@ -21,7 +21,7 @@ export default function UserDashboard() {
         </div>
       </section>
 
-      <section id='portfolio'>
+      <section id='portfolio-optimization'>
         <h2 className='mb-6 text-2xl font-bold'>Portfolio Optimization</h2>
         <div className='grid gap-6'>
           <PortfolioInfoCard />

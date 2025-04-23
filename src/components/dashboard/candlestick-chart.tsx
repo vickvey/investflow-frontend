@@ -5,12 +5,11 @@ import {
   CategoryScale,
   LinearScale,
   PointElement,
-  BarElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
   TimeScale,
-  type ChartType,
   type ChartData,
   type ChartOptions,
   type Plugin,
@@ -26,7 +25,7 @@ ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
-  BarElement,
+  LineElement,
   Title,
   Tooltip,
   Legend,
@@ -46,6 +45,7 @@ interface OHLCData {
 // Define interface for candlestick data point
 interface CandlestickDataPoint {
   x: string;
+  y: number;
   open: number;
   high: number;
   low: number;
@@ -56,21 +56,6 @@ interface CandlestickChartProps {
   ticker: string;
   dateRange: { start: Date; end: Date };
   height?: number;
-}
-
-// Type for Chart.js context
-interface CandlestickTooltipContext {
-  chart: ChartJS;
-  tooltip: {
-    dataPoints: {
-      raw: CandlestickDataPoint;
-    }[];
-  };
-  dataIndex: number;
-  dataset: {
-    data: CandlestickDataPoint[];
-  };
-  raw: CandlestickDataPoint;
 }
 
 export function CandlestickChart({
@@ -170,7 +155,7 @@ export function CandlestickChart({
     ctx.stroke();
   };
 
-  const candlestickPlugin: Plugin<ChartType> = {
+  const candlestickPlugin: Plugin<'line'> = {
     id: 'candlestick',
     beforeDraw: (chart) => {
       const ctx = chart.ctx;
@@ -181,10 +166,8 @@ export function CandlestickChart({
         const dataPoint = dataset.data[i] as unknown as CandlestickDataPoint;
         const x = (meta.data[i] as { x: number }).x;
 
-        // Determine color based on whether price went up or down
-        const color = dataPoint.open <= dataPoint.close ? '#4CAF50' : '#F44336'; // Green for up, red for down
+        const color = dataPoint.open <= dataPoint.close ? '#4CAF50' : '#F44336';
 
-        // Convert values to y-coordinates on the chart
         const yScale = chart.scales['y'] as Scale;
         const open = yScale.getPixelForValue(dataPoint.open);
         const high = yScale.getPixelForValue(dataPoint.high);
@@ -196,25 +179,26 @@ export function CandlestickChart({
     },
   };
 
-  const data: ChartData<'bar'> = {
-    labels: ohlcData.map((d) => d.date),
+  // Define the data for a line chart
+  const data: ChartData<'line'> = {
     datasets: [
       {
         label: 'OHLC',
         data: ohlcData.map((d) => ({
           x: d.date,
+          y: d.close,
           open: d.open,
           high: d.high,
           low: d.low,
           close: d.close,
-        })) as unknown as number[],
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        })) as unknown as (number | { x: number; y: number } | null)[],
+        pointRadius: 0,
+        showLine: false,
       },
     ],
   };
 
-  const options: ChartOptions<'bar'> = {
+  const options: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
@@ -230,6 +214,8 @@ export function CandlestickChart({
         },
       },
       y: {
+        min: Math.min(...ohlcData.map((d) => d.low)),
+        max: Math.max(...ohlcData.map((d) => d.high)),
         title: {
           display: true,
           text: 'Price ($)',
@@ -243,8 +229,7 @@ export function CandlestickChart({
       tooltip: {
         callbacks: {
           label: (context) => {
-            const dataPoint = (context as unknown as CandlestickTooltipContext)
-              .raw;
+            const dataPoint = context.raw as unknown as CandlestickDataPoint;
             return [
               `Open: $${dataPoint.open.toFixed(2)}`,
               `High: $${dataPoint.high.toFixed(2)}`,
@@ -260,7 +245,7 @@ export function CandlestickChart({
   return (
     <div style={{ height: `${height}px` }}>
       <Chart
-        type='bar'
+        type='line'
         data={data}
         options={options}
         plugins={[candlestickPlugin]}

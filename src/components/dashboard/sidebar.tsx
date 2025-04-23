@@ -1,8 +1,8 @@
 'use client';
 
 import type React from 'react';
-
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -22,15 +22,13 @@ type NavItem = {
   title: string;
   href: string;
   icon: React.ElementType;
-  isActive?: boolean;
 };
 
-const mainNavItems: NavItem[] = [
+const stockAnalysisItems: NavItem[] = [
   {
     title: 'Stock Information',
     href: '/user/#stock-information',
     icon: Home,
-    isActive: true,
   },
   {
     title: 'Stock Performance Analysis',
@@ -54,10 +52,10 @@ const mainNavItems: NavItem[] = [
   },
 ];
 
-const otherNavItems: NavItem[] = [
+const portfolioNavItems: NavItem[] = [
   {
-    title: 'Account Settings',
-    href: '/dashboard/settings',
+    title: 'Portfolio Optimization',
+    href: '/user/#portfolio-optimization',
     icon: Settings,
   },
   {
@@ -69,6 +67,9 @@ const otherNavItems: NavItem[] = [
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(true);
+  const pathname = usePathname();
+
+  const isActive = (href: string) => pathname.includes(href.split('#')[0]);
 
   return (
     <div
@@ -120,17 +121,17 @@ export function Sidebar() {
           <div className='mb-4'>
             {isOpen && (
               <h3 className='mb-2 px-4 text-xs font-semibold uppercase text-muted-foreground'>
-                Stock Analysis
+                <Link href={'/user/#stock-analysis'}>Stock Analysis</Link>
               </h3>
             )}
             <ul className='space-y-1'>
-              {mainNavItems.map((item) => (
+              {stockAnalysisItems.map((item) => (
                 <li key={item.title}>
                   <Link
                     href={item.href}
                     className={cn(
                       'flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                      item.isActive
+                      isActive(item.href)
                         ? 'bg-primary/10 text-primary'
                         : 'text-foreground hover:bg-secondary hover:text-primary',
                       !isOpen && 'justify-center px-2',
@@ -149,17 +150,17 @@ export function Sidebar() {
           <div className='mb-4'>
             {isOpen && (
               <h3 className='mb-2 px-4 text-xs font-semibold uppercase text-muted-foreground'>
-                Other
+                <Link href={'/user/#portfolio-optimization'}>Portfolio</Link>
               </h3>
             )}
             <ul className='space-y-1'>
-              {otherNavItems.map((item) => (
+              {portfolioNavItems.map((item) => (
                 <li key={item.title}>
                   <Link
                     href={item.href}
                     className={cn(
                       'flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors',
-                      item.isActive
+                      isActive(item.href)
                         ? 'bg-primary/10 text-primary'
                         : 'text-foreground hover:bg-secondary hover:text-primary',
                       !isOpen && 'justify-center px-2',
