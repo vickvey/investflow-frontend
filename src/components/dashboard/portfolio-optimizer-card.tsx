@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Card } from '@/components/ui/card';
 import { StockInput } from '@/components/ui/stock-input';
+import { DateRangePicker } from '@/components/ui/date-range-picker';
 import { apiUrl } from '@/lib/apiUrl';
 
 interface OptimizationMetrics {
@@ -28,8 +29,13 @@ export function PortfolioOptimizerCard() {
     'META',
   ]);
   const [currentStock, setCurrentStock] = useState('');
+  const [returnModel, setReturnModel] = useState<'simple' | 'log'>('simple');
+  const [riskTolerance, setRiskTolerance] = useState(50); // 0-100 slider
+  const [dateRange, setDateRange] = useState<{
+    startDate: Date;
+    endDate: Date;
+  } | null>(null);
   const [showResults, setShowResults] = useState(false);
-  // const [optimizationResults, setOptimizationResults] = useState<any>(null);
   const [optimizationResults, setOptimizationResults] =
     useState<OptimizationResults | null>(null);
   const [loading, setLoading] = useState(false);
@@ -51,20 +57,43 @@ export function PortfolioOptimizerCard() {
     setShowResults(false);
     setError(null);
 
-    const endDate = new Date();
-    const startDate = new Date();
-    startDate.setFullYear(endDate.getFullYear() - 1);
+    // Default date range: past year if not set
+    const endDate = dateRange?.endDate || new Date();
+    const startDate = dateRange?.startDate || new Date();
+    if (!dateRange) {
+      startDate.setFullYear(endDate.getFullYear() - 1);
+    }
+
+    // Validate inputs
+    if (stocks.length < 2) {
+      setError('Please add at least 2 stocks.');
+      setLoading(false);
+      return;
+    }
+    if (startDate >= endDate) {
+      setError('Start date must be before end date.');
+      setLoading(false);
+      return;
+    }
+
+    // Scale riskTolerance (0-100) to tau (0-2)
+    const tau = (riskTolerance / 100) * 2;
+
+    const payload = {
+      tickers: stocks,
+      start_date: startDate.toISOString().split('T')[0],
+      end_date: endDate.toISOString().split('T')[0],
+      tau,
+      return_model: returnModel,
+    };
+
+    console.log('Optimization request:', payload); // Debug log
 
     try {
       const response = await fetch(`${apiUrl}/api/optimizer/mean-variance`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          tickers: stocks,
-          start_date: startDate.toISOString().split('T')[0],
-          end_date: endDate.toISOString().split('T')[0],
-          tau: 1,
-        }),
+        body: JSON.stringify(payload),
       });
 
       if (!response.ok) {
@@ -72,6 +101,7 @@ export function PortfolioOptimizerCard() {
       }
 
       const data = await response.json();
+      console.log('Optimization response:', data); // Debug log
       setOptimizationResults(data);
       setShowResults(true);
     } catch (err) {
@@ -86,49 +116,112 @@ export function PortfolioOptimizerCard() {
     <Card title='Portfolio Optimizer'>
       <div className='mb-4'>
         <p className='text-sm text-muted-foreground'>
-          Add up to 10 stocks to your portfolio for optimization. Our engine
-          will calculate the optimal allocation based on your settings.
+          Add up to 10 stocks and configure settings to optimize your portfolio.
+          Our engine will calculate the optimal allocation based on your
+          preferences.
         </p>
       </div>
 
       {error && <div className='mb-4 text-sm text-red-600'>{error}</div>}
 
-      <div className='mb-4 flex flex-wrap gap-2'>
-        {stocks.map((stock) => (
-          <div
-            key={stock}
-            className='flex items-center gap-2 rounded-full bg-secondary px-3 py-1'
-          >
-            <span className='text-sm font-medium'>{stock}</span>
-            <button
-              onClick={() => removeStock(stock)}
-              className='rounded-full text-muted-foreground hover:text-foreground'
+      {/* Settings Section */}
+      <div className='mb-6'>
+        <h3 className='mb-4 text-lg font-semibold'>Optimization Settings</h3>
+        <div className='grid gap-4 md:grid-cols-2 lg:grid-cols-4'>
+          <div>
+            <label className='mb-1 block text-sm font-medium'>
+              Return Model
+            </label>
+            <select
+              value={returnModel}
+              onChange={(e) =>
+                setReturnModel(e.target.value as 'simple' | 'log')
+              }
+              className='w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring'
             >
-              ×
-            </button>
+              <option value='simple'>Simple Returns</option>
+              <option value='log'>Log Returns</option>
+            </select>
           </div>
-        ))}
+
+          <div className='lg:col-span-2'>
+            <label className='mb-1 block text-sm font-medium'>
+              Time Period
+            </label>
+            <DateRangePicker
+              onSelect={(range) =>
+                setDateRange(
+                  range ? { startDate: range.start, endDate: range.end } : null,
+                )
+              }
+            />
+          </div>
+
+          <div>
+            <label className='mb-1 block text-sm font-medium'>
+              Risk Tolerance: {riskTolerance}% (Tau:{' '}
+              {((riskTolerance / 100) * 2).toFixed(2)})
+            </label>
+            <input
+              type='range'
+              min='0'
+              max='100'
+              value={riskTolerance}
+              onChange={(e) =>
+                setRiskTolerance(Number.parseInt(e.target.value))
+              }
+              className='w-full'
+            />
+            <div className='flex justify-between text-xs text-muted-foreground'>
+              <span>Conservative</span>
+              <span>Balanced</span>
+              <span>Aggressive</span>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className='mb-6 flex gap-2'>
-        <StockInput
-          className='flex-1'
-          placeholder='Add a stock...'
-          onSelect={(stock) => setCurrentStock(stock)}
-        />
-        <button
-          onClick={addStock}
-          disabled={
-            !currentStock ||
-            stocks.includes(currentStock) ||
-            stocks.length >= 10
-          }
-          className='rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
-        >
-          Add
-        </button>
+      {/* Stock Selection Section */}
+      <div className='mb-6'>
+        <h3 className='mb-4 text-lg font-semibold'>Portfolio Stocks</h3>
+        <div className='mb-4 flex flex-wrap gap-2'>
+          {stocks.map((stock) => (
+            <div
+              key={stock}
+              className='flex items-center gap-2 rounded-full bg-secondary px-3 py-1'
+            >
+              <span className='text-sm font-medium'>{stock}</span>
+              <button
+                onClick={() => removeStock(stock)}
+                className='rounded-full text-muted-foreground hover:text-foreground'
+              >
+                ×
+              </button>
+            </div>
+          ))}
+        </div>
+
+        <div className='flex gap-2'>
+          <StockInput
+            className='flex-1'
+            placeholder='Add a stock...'
+            onSelect={(stock) => setCurrentStock(stock)}
+          />
+          <button
+            onClick={addStock}
+            disabled={
+              !currentStock ||
+              stocks.includes(currentStock) ||
+              stocks.length >= 10
+            }
+            className='rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50'
+          >
+            Add
+          </button>
+        </div>
       </div>
 
+      {/* Optimization Button */}
       <div className='mb-6'>
         <button
           onClick={generateOptimization}
@@ -139,6 +232,7 @@ export function PortfolioOptimizerCard() {
         </button>
       </div>
 
+      {/* Results Section */}
       {showResults && optimizationResults && (
         <div className='mt-6'>
           <h3 className='mb-4 text-lg font-semibold'>Optimization Results</h3>
