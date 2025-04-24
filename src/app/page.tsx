@@ -58,12 +58,12 @@ export default function LandingPage() {
           <div className='flex items-center gap-4'>
             <Link
               href='/login'
-              className='text-sm font-medium hover:text-primary transition-colors'
+              className='text-sm hidden font-medium hover:text-primary transition-colors'
             >
               Log in
             </Link>
 
-            <Link href='/signup'>
+            <Link href='/user'>
               <button className='px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer transition-colors'>
                 Get Started
               </button>
@@ -90,7 +90,7 @@ export default function LandingPage() {
                   </p>
                 </div>
                 <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                  <Link href='/signup'>
+                  <Link href='/user'>
                     <button className='px-6 py-3 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer flex items-center transition-colors'>
                       Get Started
                       <ArrowRight className='ml-2 h-4 w-4' />
@@ -678,7 +678,7 @@ export default function LandingPage() {
                 </p>
               </div>
               <div className='flex flex-col gap-2 min-[400px]:flex-row'>
-                <Link href='/signup'>
+                <Link href='/user'>
                   <button className='px-6 py-3 bg-white text-primary font-medium rounded-lg shadow-md hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50 cursor-pointer flex items-center transition-colors'>
                     Start Your Free Trial
                     <ArrowRight className='ml-2 h-4 w-4' />
@@ -707,19 +707,19 @@ export default function LandingPage() {
           </p>
           <div className='flex gap-4'>
             <Link
-              href='#'
+              href='http://github.com/vickvey/investflow-frontend/license'
               className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Terms
             </Link>
             <Link
-              href='#'
+              href='http://github.com/vickvey/investflow-frontend/license'
               className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Privacy
             </Link>
             <Link
-              href='#'
+              href='https://github.com/vickvey'
               className='text-sm text-muted-foreground hover:text-primary transition-colors'
             >
               Contact
