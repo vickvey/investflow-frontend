@@ -188,7 +188,7 @@ export default function LandingPage() {
               </div>
               <div className='rounded-xl border bg-card p-2 shadow-md'>
                 <Image
-                  src='/placeholder.svg?height=400&width=500'
+                  src='/comprehensive.jpg?height=400&width=500'
                   width={500}
                   height={400}
                   alt='Stock Analysis Dashboard showing price charts and technical indicators'
@@ -199,7 +199,7 @@ export default function LandingPage() {
             <div className='mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12'>
               <div className='order-last lg:order-first rounded-xl border bg-card p-2 shadow-md'>
                 <Image
-                  src='/placeholder.svg?height=400&width=500'
+                  src='/scientific_portfolio.jpg?height=400&width=500'
                   width={500}
                   height={400}
                   alt='Portfolio Allocation interface showing asset allocation pie chart and efficient frontier'
@@ -343,7 +343,7 @@ export default function LandingPage() {
                 </div>
                 <div className='relative h-[250px] lg:h-[300px]'>
                   <Image
-                    src='/placeholder.svg?height=300&width=500'
+                    src='/science_behind_SA.jpg?height=300&width=500'
                     alt='Efficient Frontier curve showing risk-return tradeoff'
                     fill
                     className='object-contain rounded-lg'
@@ -389,7 +389,7 @@ export default function LandingPage() {
                 </p>
                 <div className='relative h-[200px]'>
                   <Image
-                    src='/placeholder.svg?height=200&width=400'
+                    src='/time_period.jpg?height=200&width=400'
                     alt='Time period analysis chart showing stock performance'
                     fill
                     className='object-contain rounded-lg'
@@ -409,7 +409,7 @@ export default function LandingPage() {
                 </p>
                 <div className='relative h-[200px]'>
                   <Image
-                    src='/placeholder.svg?height=200&width=400'
+                    src='/technical_indicator.jpg?height=200&width=400'
                     alt='Technical indicators chart showing MACD and RSI'
                     fill
                     className='object-contain rounded-lg'
@@ -430,7 +430,7 @@ export default function LandingPage() {
                 </p>
                 <div className='relative h-[200px]'>
                   <Image
-                    src='/placeholder.svg?height=200&width=400'
+                    src='/fd.jpg?height=200&width=400'
                     alt='Fundamental data dashboard showing financial metrics'
                     fill
                     className='object-contain rounded-lg'
@@ -451,7 +451,7 @@ export default function LandingPage() {
                 </p>
                 <div className='relative h-[200px]'>
                   <Image
-                    src='/placeholder.svg?height=200&width=400'
+                    src='/comparative_analysis.jpg?height=200&width=400'
                     alt='Comparative analysis chart showing multiple stocks'
                     fill
                     className='object-contain rounded-lg'
@@ -483,7 +483,7 @@ export default function LandingPage() {
               <div className='rounded-xl border bg-card p-4 shadow-md'>
                 <div className='relative h-[400px] md:h-[500px]'>
                   <Image
-                    src='/placeholder.svg?height=500&width=1000'
+                    src='/last_big_image.png?height=500&width=1000'
                     alt='InvestFlow dashboard showing portfolio performance, stock analysis, and allocation tools'
                     fill
                     className='object-contain rounded-lg'
