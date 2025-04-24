@@ -106,7 +106,7 @@ export default function LandingPage() {
               <div className='flex items-center justify-center'>
                 <div className='relative w-full h-[300px] md:h-[400px] lg:h-[500px]'>
                   <Image
-                    src='/placeholder.svg?height=500&width=600'
+                    src='/landing-page-pic.jpg?height=500&width=600'
                     alt='Dashboard Preview showing stock analysis charts and portfolio allocation'
                     fill
                     className='object-contain'
@@ -497,8 +497,8 @@ export default function LandingPage() {
                   </div>
                   <h3 className='text-lg font-bold'>Performance Tracking</h3>
                   <p className='text-sm text-muted-foreground financial-text'>
-                    Monitor your portfolio's performance with detailed metrics
-                    and visualizations.
+                    Monitor your portfolio&apos;s performance with detailed
+                    metrics and visualizations.
                   </p>
                 </div>
                 <div className='flex flex-col items-center space-y-2 text-center'>
