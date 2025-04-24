@@ -425,7 +425,7 @@ export default function LandingPage() {
                 </div>
                 <p className='text-muted-foreground mb-4 financial-text'>
                   Review key financial metrics, earnings reports, and valuation
-                  ratios to assess a company's financial health and growth
+                  ratios to assess a company&apos;s financial health and growth
                   potential.
                 </p>
                 <div className='relative h-[200px]'>
@@ -567,9 +567,9 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className='text-sm text-muted-foreground financial-text'>
-                    "InvestFlow's portfolio allocation tools helped me optimize
-                    my investments based on Modern Portfolio Theory. My returns
-                    increased by 12% while reducing volatility."
+                    &quot;InvestFlow&apos;s portfolio allocation tools helped me
+                    optimize my investments based on Modern Portfolio Theory. My
+                    returns increased by 12% while reducing volatility.&quot;
                   </p>
                 </div>
                 <div className='flex items-center space-x-2'>
@@ -606,9 +606,9 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className='text-sm text-muted-foreground financial-text'>
-                    "The technical analysis tools are comprehensive and easy to
-                    use. I can quickly evaluate stocks using multiple indicators
-                    and make data-driven decisions."
+                    &quot;The technical analysis tools are comprehensive and
+                    easy to use. I can quickly evaluate stocks using multiple
+                    indicators and make data-driven decisions.&quot;
                   </p>
                 </div>
                 <div className='flex items-center space-x-2'>
@@ -643,9 +643,9 @@ export default function LandingPage() {
                     ))}
                   </div>
                   <p className='text-sm text-muted-foreground financial-text'>
-                    "As a financial advisor, I use InvestFlow to demonstrate
-                    portfolio optimization concepts to my clients. The
-                    visualizations make complex theories accessible."
+                    &quot;As a financial advisor, I use InvestFlow to
+                    demonstrate portfolio optimization concepts to my clients.
+                    The visualizations make complex theories accessible.&quot;
                   </p>
                 </div>
                 <div className='flex items-center space-x-2'>

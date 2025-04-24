@@ -13,6 +13,7 @@ import {
   Tooltip,
   Legend,
   TimeScale,
+  ChartOptions, // Add ChartOptions for typing
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import { Card } from '@/components/ui/card';
@@ -131,14 +132,14 @@ export function StockPerformanceCard() {
     ],
   };
 
-  const priceChartOptions = {
+  const priceChartOptions: ChartOptions<'line'> = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
         type: 'time' as const,
         time: {
-          unit: 'day',
+          unit: 'day' as const, // Explicitly set to a valid unit
         },
         title: {
           display: true,
@@ -177,14 +178,14 @@ export function StockPerformanceCard() {
     ],
   };
 
-  const volumeChartOptions = {
+  const volumeChartOptions: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       x: {
         type: 'time' as const,
         time: {
-          unit: 'day',
+          unit: 'day' as const, // Explicitly set to a valid unit
         },
         title: {
           display: true,
