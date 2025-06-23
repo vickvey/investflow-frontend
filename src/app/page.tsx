@@ -14,63 +14,13 @@ import {
   Briefcase,
   ChevronRight,
 } from 'lucide-react';
+import Header from '@/components/landing/header';
+import Footer from '@/components/landing/footer';
 
 export default function LandingPage() {
   return (
-    <div className='flex min-h-screen flex-col'>
-      <header className='sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/60'>
-        <div className='container flex h-16 items-center justify-between'>
-          {/* InvestFlow and Logo */}
-          <div className='flex items-center gap-2'>
-            <TrendingUp className='h-6 w-6 text-primary' />
-            <span className='text-xl font-bold tracking-tight'>InvestFlow</span>
-          </div>
-
-          {/* Landing Page Navigation */}
-          <nav className='hidden md:flex gap-6'>
-            <Link
-              href='#features'
-              className='text-sm font-medium hover:text-primary transition-colors'
-            >
-              Features
-            </Link>
-            <Link
-              href='#portfolio-theory'
-              className='text-sm font-medium hover:text-primary transition-colors'
-            >
-              Portfolio Theory
-            </Link>
-            <Link
-              href='#analysis'
-              className='text-sm font-medium hover:text-primary transition-colors'
-            >
-              Stock Analysis
-            </Link>
-            <Link
-              href='#testimonials'
-              className='text-sm font-medium hover:text-primary transition-colors'
-            >
-              Testimonials
-            </Link>
-          </nav>
-
-          {/* Signup and Login */}
-          <div className='flex items-center gap-4'>
-            <Link
-              href='/login'
-              className='text-sm hidden font-medium hover:text-primary transition-colors'
-            >
-              Log in
-            </Link>
-
-            <Link href='/user'>
-              <button className='px-4 py-2 bg-primary text-primary-foreground font-medium rounded-lg shadow-sm hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50 cursor-pointer transition-colors'>
-                Get Started
-              </button>
-            </Link>
-          </div>
-        </div>
-      </header>
+    <div className='min-h-screen flex flex-col'>
+      <Header />
 
       {/* Main Content Section */}
       <main className='flex-1'>
@@ -696,37 +646,7 @@ export default function LandingPage() {
       </main>
 
       {/* Footer Section */}
-      <footer className='w-full border-t py-6 bg-card'>
-        <div className='container flex flex-col items-center justify-between gap-4 md:flex-row'>
-          <div className='flex items-center gap-2'>
-            <TrendingUp className='h-6 w-6 text-primary' />
-            <span className='text-lg font-bold'>InvestFlow</span>
-          </div>
-          <p className='text-center text-sm text-muted-foreground md:text-left'>
-            &copy; {new Date().getFullYear()} InvestFlow. All rights reserved.
-          </p>
-          <div className='flex gap-4'>
-            <Link
-              href='http://github.com/vickvey/investflow-frontend/license'
-              className='text-sm text-muted-foreground hover:text-primary transition-colors'
-            >
-              Terms
-            </Link>
-            <Link
-              href='http://github.com/vickvey/investflow-frontend/license'
-              className='text-sm text-muted-foreground hover:text-primary transition-colors'
-            >
-              Privacy
-            </Link>
-            <Link
-              href='https://github.com/vickvey'
-              className='text-sm text-muted-foreground hover:text-primary transition-colors'
-            >
-              Contact
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
